@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-58">
+    <title>ch3_6_标准饼图</title>
+    <script type="text/javascript" src="D:\陈碧茵\echars\js\echarts46.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.6.0/echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width:850px;height:600px;margin-top:10px;margin-left:10px;">
+    </div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));    
+        option = {  
+            color:['red','blue','DarkGreen','LimeGreen','Purple','Green','lime','grey'],
+            title: {
+                text: '二级学院分布-南丁格尔玫瑰图',
+                left:'center',
+                backgroundColor: '#B5A642',
+                textStyle:{
+                    color:"#9932CD",
+                    fontFamily:'黑体',
+                    fontSize:18
+                },
+                subtext:'纯属虚构',
+                subtextStyle:{
+                    color:"#D9D919",
+                    fontSize:12
+                },
+            },
+            tooltip: {
+                trigger:'item',
+                formatter:"{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                left:'center',
+                top:'bottom',
+                data: ['计算机','大数据','外国语','机器人','建工','机电','艺术','财金']
+            },
+            toolbox: {
+                show: true,
+                left: 510,
+                top: 18,
+                feature: {
+                    mark:{ show: true },
+                    dataView: { show: true, readonly: false },
+                    magicType: {
+                        show: true,
+                        type: ['pie','funnel']
+                    },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            Calculable: true,
+            series: [
+                {
+                    name: '学生人数（半径模式）',
+                    type: 'pie',
+                    radius: [33,90],
+                    center: ['25%',180],
+                    roseType:'radius',
+                    itemStyle:{
+                        normal:{
+                            labelLine:{
+                                show:false
+                            }
+                        },
+                        emphasis:{
+                            label:{
+                                show:true
+                            },
+                            labelLine:{
+                                show:true
+                            }
+                        }
+                    },
+                    data: [
+                        { value: 2000, name: '计算机'}, { value:1500, name:'大数据' },
+                        { value: 1200, name: '外国语'}, { value:1100,name:'机器人' },
+                        { value: 1000, name: '建工'},   {value:900, name:'机电' },
+                        { value: 800,  name: '艺术'},   { value:700, name:'财经' }
+                    ]
+                },
+                {
+                    name: '学生人数（面积模式）',
+                    type: 'pie',
+                    radius:[33,90],
+                    center:['75%',180],
+                    roseType:'area',
+                    data: [
+                        { value: 2000, name: '计算机'}, { value:1500, name:'大数据' },
+                        { value: 1200, name: '外国语'}, { value:1100,name:'机器人' },
+                        { value: 1000, name: '建工'},   {value:900, name:'机电' },
+                        { value: 800,  name: '艺术'},   { value:700, name:'财经' }                       
+                    ]
+                },
+                {
+                    name: '教授人数（面积模式）',
+                    type: 'pie',
+                    radius:[33,90],
+                    center:['48%',420],
+                    roseType:'area',
+                    data: [
+                        { value: 25, name: '计算机'}, { value:15, name:'大数据' },
+                        { value: 12, name: '外国语'}, { value:10,name:'机器人' },
+                        { value: 8, name: '建工'},   {value:7, name:'机电' },
+                        { value: 6,  name: '艺术'},   { value:4, name:'财经' }  
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
